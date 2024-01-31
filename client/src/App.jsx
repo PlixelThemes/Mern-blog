@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {Home, About, SignUp, SignIn, Dashboard, Projects } from './Pages/index'
-import {Footer, Header} from './Components/index'
+import {Footer, Header, PrivateRoute} from './Components/index'
 
 
  function App() {
@@ -12,7 +12,9 @@ import {Footer, Header} from './Components/index'
         <Route path='/about' element={<About />}/>
         <Route path='/sign-in' element={<SignIn />}/>
         <Route path='/sign-up' element={<SignUp />}/>
-        <Route path='/dashboard' element={<Dashboard />}/>
+        <Route element={<PrivateRoute />} >
+          <Route path='/dashboard' element={<Dashboard />}/>
+        </Route>
         <Route path='/projects' element={<Projects />}/>
       </Routes>
       <Footer />
